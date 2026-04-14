@@ -54,6 +54,12 @@
     neededForBoot = true;
   };
 
+  fileSystems."/incus" = {
+    device = "rpool/safe/incus";
+    fsType = "zfs";
+    neededForBoot = true;
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

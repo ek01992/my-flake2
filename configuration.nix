@@ -63,7 +63,7 @@
   networking.hostId = "a1b2c3d4"; # <<<--- replace with your own value
   networking.networkmanager.enable = true;
 
-  users.users.root.initialPassword = "changeme"; # change after first login
+  users.users.root.initialPassword = "temp"; # change after first login
 
   boot.kernelParams = [ "console=tty1" ];
 
@@ -74,21 +74,21 @@
   users.mutableUsers = false;
 
   # CHANGE `your-user`
-  users.users.your-user = {
+  users.users.erik = {
     isNormalUser = true;
     extraGroups = [
       "wheel"
       "networkmanager"
       "video"
     ];
-    group = "your-user";
+    group = "erik";
     # :r /tmp/pass.txt:
     initialHashedPassword = "";
   };
 
   # This enables `chown -R your-user:your-user`
   # CHANGE `your-user`
-  users.groups.your-user = { };
+  users.groups.erik = { };
 
   # ------------------------------------------------------------------
   #  (Optional) Helpful for recovery situations

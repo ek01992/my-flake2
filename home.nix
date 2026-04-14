@@ -4,9 +4,9 @@
 }:
 {
   # Change your-user
-  home.username = "your-user";
+  home.username = "erik";
   # Change your-user
-  home.homeDirectory = lib.mkDefault "/home/your-user";
+  home.homeDirectory = lib.mkDefault "erik";
   home.stateVersion = "26.05";
 
   imports = [

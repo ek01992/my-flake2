@@ -102,6 +102,7 @@ zfs create -p -o mountpoint=legacy rpool/local/nix
 # Persistent data
 zfs create -p -o mountpoint=legacy rpool/safe/home
 zfs create -p -o mountpoint=legacy rpool/safe/persist
+zfs create -p -o mountpoint=legacy rpool/safe/incus
 
 # 7. Mounting
 echo -e "${GREEN}[6/6] Mounting filesystems...${NC}"
@@ -109,7 +110,7 @@ echo -e "${GREEN}[6/6] Mounting filesystems...${NC}"
 mount -t zfs rpool/local/root /mnt
 
 # Create directories
-mkdir -p /mnt/{nix,home,persist,boot}
+mkdir -p /mnt/{nix,home,persist,boot,incus}
 
 # Mount Boot
 mount -t vfat -o umask=0077 "$PART1" /mnt/boot
@@ -118,6 +119,7 @@ mount -t vfat -o umask=0077 "$PART1" /mnt/boot
 mount -t zfs rpool/local/nix /mnt/nix
 mount -t zfs rpool/safe/home /mnt/home
 mount -t zfs rpool/safe/persist /mnt/persist
+mount -t zfs rpool/safe/incus /mnt/incus
 
 # Capture UUID for configuration
 LUKS_UUID=$(blkid -s UUID -o value "$PART2")
@@ -148,7 +150,8 @@ for ds in \
   rpool/local/root \
   rpool/local/nix \
   rpool/safe/home \
-  rpool/safe/persist
+  rpool/safe/persist \
+  rpool/safe/incus
 do
   zfs list -H -o name "$ds" >/dev/null 2>&1 || fail "Missing dataset: $ds"
 done
@@ -165,7 +168,7 @@ findmnt -T /mnt/boot   >/dev/null 2>&1 || fail "/mnt/boot is not a mountpoint"
 findmnt -T /mnt/nix    >/dev/null 2>&1 || fail "/mnt/nix is not a mountpoint"
 findmnt -T /mnt/home   >/dev/null 2>&1 || fail "/mnt/home is not a mountpoint"
 findmnt -T /mnt/persist >/dev/null 2>&1 || fail "/mnt/persist is not a mountpoint"
-
+findmnt -T /mnt/incus >/dev/null 2>&1 || fail "/mnt/incus is not a mountpoint"
 # 6) Show a compact status summary (useful when you paste logs)
 echo
 echo "--- lsblk -f ${DISK} ---"
@@ -209,5 +212,9 @@ echo '    device = "rpool/safe/persist";'
 echo '    fsType = "zfs";'
 echo '    neededForBoot = true;  # <-- ADD THIS'
 echo '  };'
-
-
+echo
+echo '  fileSystems."/incus" = {'
+echo '    device = "rpool/safe/incus";'
+echo '    fsType = "zfs";'
+echo '    neededForBoot = true;  # <-- ADD THIS'
+echo '  };'

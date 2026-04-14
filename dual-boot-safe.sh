@@ -5,7 +5,7 @@ set -euo pipefail
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
-NC='\033[0m' 
+NC='\033[0m'
 
 echo -e "${GREEN}=== NixOS Dual-Boot Safe Setup (ZFS+LUKS+Impermanence) ===${NC}"
 echo -e "${YELLOW}IMPORTANT: You must have unallocated free space on your disk already.${NC}"
@@ -72,17 +72,19 @@ zfs snapshot rpool/local/root@blank
 zfs create -p -o mountpoint=legacy rpool/local/nix
 zfs create -p -o mountpoint=legacy rpool/safe/home
 zfs create -p -o mountpoint=legacy rpool/safe/persist
+zfs create -p -o mountpoint=legacy rpool/safe/incus
 
 # 7. Mounting & Permissions
 mount -t zfs rpool/local/root /mnt
-mkdir -p /mnt/{nix,home,persist,boot}
+mkdir -p /mnt/{nix,home,persist,boot,incus}
 mount -t vfat "$PART1" /mnt/boot
 mount -t zfs rpool/local/nix /mnt/nix
 mount -t zfs rpool/safe/home /mnt/home
 mount -t zfs rpool/safe/persist /mnt/persist
+mount -t zfs rpool/safe/incus /mnt/incus
 
 # Change Your-User to your username
-TARGET_USER="Your-User" 
+TARGET_USER="erik"
 chmod 755 /mnt
 chmod 755 /mnt/home
 mkdir -p /mnt/home/$TARGET_USER /mnt/persist/home/$TARGET_USER
@@ -92,4 +94,3 @@ chown -R 1000:100 /mnt/persist/home/$TARGET_USER
 LUKS_UUID=$(blkid -s UUID -o value "$PART2")
 echo -e "${GREEN}Success! LUKS UUID: ${LUKS_UUID}${NC}"
 nixos-generate-config --root /mnt
-

@@ -25,7 +25,8 @@ for ds in \
   rpool/local/root \
   rpool/local/nix \
   rpool/safe/home \
-  rpool/safe/persist
+  rpool/safe/persist \
+  rpool/safe/incus
 do
   zfs list -H -o name "$ds" >/dev/null 2>&1 || fail "Missing dataset: $ds"
 done
@@ -42,6 +43,7 @@ findmnt -T /mnt/boot   >/dev/null 2>&1 || fail "/mnt/boot is not a mountpoint"
 findmnt -T /mnt/nix    >/dev/null 2>&1 || fail "/mnt/nix is not a mountpoint"
 findmnt -T /mnt/home   >/dev/null 2>&1 || fail "/mnt/home is not a mountpoint"
 findmnt -T /mnt/persist >/dev/null 2>&1 || fail "/mnt/persist is not a mountpoint"
+findmnt -T /mnt/incus >/dev/null 2>&1 || fail "/mnt/incus is not a mountpoint"
 
 # 6) Show a compact status summary (useful when you paste logs)
 echo
@@ -85,4 +87,3 @@ rmdir /mnt/etc/nixos
 # Link the persistent config back to the system location
 # (The rollback will wipe the link, but we can recreate it or use /persist in the config)
 # Ideally, you just want the files safe first.
-
