@@ -50,7 +50,7 @@
   boot.initrd.luks.devices = {
     cryptroot = {
       # replace `uuid#` with output of UUID # from `sudo blkid /dev/vda2`
-      device = "/dev/disk/by-uuid/uuid#";
+      device = "/dev/disk/by-uuid/1639f270-49c7-4802-a5e4-ce5dde56a7d6";
       allowDiscards = true;
       preLVM = true;
     };
@@ -60,7 +60,7 @@
   #  Basic system
   # ------------------------------------------------------------------
   # Unique 8-hex hostId (run once in live ISO: head -c4 /dev/urandom | xxd -p)
-  networking.hostId = "a1b2c3d4"; # <<<--- replace with your own value
+  networking.hostId = "e1add2a5"; # <<<--- replace with your own value
   networking.networkmanager.enable = true;
 
   users.users.root.initialPassword = "temp"; # change after first login
@@ -83,7 +83,7 @@
     ];
     group = "erik";
     # :r /tmp/pass.txt:
-    initialHashedPassword = "";
+    initialHashedPassword = "$y$j9T$CX.Q79tmrCY1nKHGCpjq2.$uqarPMOsKeIbAUMp9C26DyGVHAkS2cTxNCTjj714VD.";
   };
 
   # This enables `chown -R your-user:your-user`
