@@ -11,53 +11,54 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "thunderbolt"
-    "nvme"
-    "uas"
-    "usbhid"
-    "sd_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/" = {
-    device = "rpool/local/root";
-    fsType = "zfs";
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "xhci_pci"
+        "thunderbolt"
+        "nvme"
+        "uas"
+        "usbhid"
+        "sd_mod"
+      ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/29B3-4A92";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
-
-  fileSystems."/nix" = {
-    device = "rpool/local/nix";
-    fsType = "zfs";
-  };
-
-  fileSystems."/home" = {
-    device = "rpool/safe/home";
-    fsType = "zfs";
-    neededForBoot = true;
-  };
-
-  fileSystems."/persist" = {
-    device = "rpool/safe/persist";
-    fsType = "zfs";
-    neededForBoot = true;
-  };
-
-  fileSystems."/incus" = {
-    device = "rpool/safe/incus";
-    fsType = "zfs";
-    neededForBoot = true;
+  fileSystems = {
+    "/" = {
+      device = "rpool/local/root";
+      fsType = "zfs";
+    };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/29B3-4A92";
+      fsType = "vfat";
+      options = [
+        "fmask=0077"
+        "dmask=0077"
+      ];
+    };
+    "/nix" = {
+      device = "rpool/local/nix";
+      fsType = "zfs";
+    };
+    "/home" = {
+      device = "rpool/safe/home";
+      fsType = "zfs";
+      neededForBoot = true;
+    };
+    "/persist" = {
+      device = "rpool/safe/persist";
+      fsType = "zfs";
+      neededForBoot = true;
+    };
+    "/incus" = {
+      device = "rpool/safe/incus";
+      fsType = "zfs";
+      neededForBoot = true;
+    };
   };
 
   swapDevices = [ ];
