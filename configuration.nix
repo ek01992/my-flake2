@@ -116,14 +116,18 @@
     enable = true;
     settings = {
       PermitRootLogin = "no";
-      PasswordAuthentication = "no";
-      KbdInteractiveAuthentication = "no";
-      PrintMotd = "no";
-      UsePAM = "yes";
-      X11Forwarding = "no";
-      PermitEmptyPasswords = "no";
-      PubkeyAuthentication = "yes";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      X11Forwarding = true;
+      PrintMotd = false;
+      UsePAM = true;
     };
+    extraConfig = ''
+    AllowGroups wheel
+    PermitEmptyPasswords no
+    ChallengeResponseAuthentication no
+    AuthenticationMethods publickey
+    '';
   };
   system.stateVersion = "26.05";
 }
