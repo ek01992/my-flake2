@@ -41,15 +41,15 @@
     createDirectories = true;
     desktop = null;
     documents = null;
-    download = "${config.home.homeDirectory}/downloads";
+    download = "/home/erik/downloads";
     music = null;
     pictures = null;
     publicShare = null;
     templates = null;
     videos = null;
     extraConfig = {
-      XDG_PROJECTS_DIR = "${config.home.homeDirectory}/projects";
-      XDG_NOTES_DIR = "${config.home.homeDirectory}/notes";
+      XDG_PROJECTS_DIR = "/home/erik/projects";
+      XDG_NOTES_DIR = "/home/erik/notes";
     };
   };
 }
