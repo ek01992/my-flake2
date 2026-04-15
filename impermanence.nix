@@ -19,8 +19,8 @@
       "/var/lib/nixos" # Keeps track of UID/GIDs
       "/var/lib/systemd/coredump"
     ];
-    # files = [
-    #   "/etc/machine-id"
-    # ];
+    files = [
+      "/etc/machine-id"
+    ];
   };
 }
