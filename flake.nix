@@ -21,6 +21,7 @@
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
+            impermanence.nixosModules.impermanence
             # home-manager.nixosModules.home-manager
             # inputs.lanzaboote.nixosModules.lanzaboote
 
