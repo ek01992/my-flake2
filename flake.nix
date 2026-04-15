@@ -16,7 +16,7 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, impermanence, ... }@inputs:
+    { nixpkgs, home-manager, ... }@inputs:
     {
       nixosConfigurations = {
         nixxy = nixpkgs.lib.nixosSystem {

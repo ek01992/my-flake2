@@ -66,7 +66,7 @@
           "video"
          ];
         group = "erik";
-        initialHashedPassword = "$y$j9T$CX.Q79tmrCY1nKHGCpjq2.$uqarPMOsKeIbAUMp9C26DyGVHAkS2cTxNCTjj714VD.";
+        initialHashedPassword = "$y$j9T$.m8fpA6JBHBgvdjhwBk/d.$IyYFB0lUq4rSxJsqGDNczXmwVpH8S72ZBxefpi9ZJH5";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAFlPT1jGxLHKRxId53rGNGWT6pI8HzGQ2nyKcG4RGBa erik@home-desktop"
         ];
