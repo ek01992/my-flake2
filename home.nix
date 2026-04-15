@@ -21,13 +21,10 @@
     enable = true;
     settings.user = {
       name = "Erik";
-      userName = "ek01992";
       email = "ek01992@proton.me";
     };
-    extraConfig = {
-      init.defaultBranch = "main";
-      pull.rebase = true;
-    };
+    init.defaultBranch = "main";
+    pull.rebase = true;
   };
 
   # xdg.portal = {

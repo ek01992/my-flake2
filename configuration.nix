@@ -123,10 +123,10 @@
       UsePAM = true;
     };
     extraConfig = ''
-    AllowGroups wheel
-    PermitEmptyPasswords no
-    ChallengeResponseAuthentication no
-    AuthenticationMethods publickey
+      AllowGroups wheel
+      PermitEmptyPasswords no
+      ChallengeResponseAuthentication no
+      AuthenticationMethods publickey
     '';
   };
   system.stateVersion = "26.05";
