@@ -8,6 +8,13 @@
     username = "erik";
     homeDirectory = lib.mkDefault "erik";
     stateVersion = "26.05";
+
+    persistence."/persist" = {
+      directories = [
+        { directory = ".ssh"; mode = "0700"; }
+        { directory = ".config/git"; mode = "0700"; }
+      ];
+    };
   };
 
   programs = {
@@ -32,5 +39,17 @@
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
+    desktop = null;
+    documents = null;
+    download = "${config.home.homeDirectory}/downloads";
+    music = null;
+    pictures = null;
+    publicShare = null;
+    templates = null;
+    videos = null;
+    extraConfig = {
+      XDG_PROJECTS_DIR = "${config.home.homeDirectory}/projects";
+      XDG_NOTES_DIR = "${config.home.homeDirectory}/notes";
+    };
   };
 }
