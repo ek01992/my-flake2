@@ -22,6 +22,7 @@
     ];
     files = [
       "/etc/machine-id"
+      { file = "/etc/nix/id_rsa"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
     ];
   };
 }
