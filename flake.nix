@@ -4,8 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
-    # home-manager.url = "github:nix-community/home-manager";
-    # home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # lanzaboote = {
     #   url = "github:nix-community/lanzaboote/v1.0.0";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -14,27 +14,27 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }@inputs:
+    { nixpkgs, home-manager, impermanence, ... }@inputs:
     {
       nixosConfigurations = {
         nixxy = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
-            inputs.impermanence.nixosModules.impermanence
-            # home-manager.nixosModules.home-manager
+            impermanence.nixosModules.impermanence
+            home-manager.nixosModules.home-manager
             # inputs.lanzaboote.nixosModules.lanzaboote
 
-            # {
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
-            #   # Change `your-user`
-            #   home-manager.users.your-user = ./home.nix;
-            #   home-manager.extraSpecialArgs = {
-            #     inherit inputs;
-            #   };
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              # Change `your-user`
+              home-manager.users.erik = ./home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+              };
+            }
 
-            # }
           ];
         };
       };
