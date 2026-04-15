@@ -97,7 +97,7 @@
         PermitEmptyPasswords no
         ChallengeResponseAuthentication no
         AuthenticationMethods publickey
-        AuthorizedKeysFile ~.ssh/authorized_keys
+        AuthorizedKeysFile /home/erik/.ssh/authorized_keys
       '';
     };
     zfs = {

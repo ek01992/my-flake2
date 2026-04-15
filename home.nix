@@ -11,8 +11,8 @@
 
     persistence."/persist" = {
       directories = [
-        { directory = ".ssh"; mode = "0700"; }
-        { directory = ".config/git"; mode = "0700"; }
+        { directory = "/home/erik/.ssh"; mode = "0700"; }
+        { directory = "/home/erik/.config/git"; mode = "0700"; }
       ];
     };
   };
