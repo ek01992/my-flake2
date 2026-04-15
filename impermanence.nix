@@ -15,6 +15,7 @@
     directories = [
       # "/var/lib/sbctl"
       "/etc/NetworkManager/system-connections" # This is where Wi-Fi/Ethernet profiles live
+      "/etc/nixos"
       "/var/lib/bluetooth" # While you're at it, keep your Bluetooth pairs
       "/var/lib/nixos" # Keeps track of UID/GIDs
       "/var/lib/systemd/coredump"
