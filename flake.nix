@@ -12,7 +12,7 @@
     #   url = "github:nix-community/lanzaboote/v1.0.0";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    impermanence.url = "github:nix-community/impermanence";
+    # impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs =
@@ -23,7 +23,7 @@
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
-            impermanence.nixosModules.impermanence
+            # impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             # inputs.lanzaboote.nixosModules.lanzaboote
             {
@@ -31,14 +31,11 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.erik = ./home.nix;
-                extraSpecialArgs = {
-                  inherit inputs;
-                };
+                extraSpecialArgs = { inherit inputs; };
               };
             }
           ];
         };
       };
-
   };
 }

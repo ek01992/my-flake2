@@ -22,7 +22,6 @@
     ];
     files = [
       "/etc/machine-id"
-      { file = "/etc/ssh/ssh_host_ed25519_key"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
     ];
   };
 }

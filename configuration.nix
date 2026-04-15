@@ -7,23 +7,17 @@
     ./hardware-configuration.nix
     ./impermanence.nix
   ];
-  #============================#
-  #      Lanzaboote
-  # ===========================#
   # environment.systemPackages = [ pkgs.sbctl ];
-
-  # boot.loader.systemd-boot.enable = lib.mkForce false;
-
-  # boot.lanzaboote = {
-  #   enable = true;
-  #   pkiBundle = "/var/lib/sbctl";
-  # };
-  # =================================#
+  environment.systemPackages  = with pkgs; [
+    git
+    vim
+  ];
 
   boot = {
     loader = {
       systemd-boot = {
         enable = true;
+        # enable = lib.mkForce false;
         consoleMode = "max";
         editor = false;
       };
@@ -37,6 +31,10 @@
       devNodes = "/dev/";
       requestEncryptionCredentials = false;
     };
+    # lanzaboote = {
+    #   enable = true;
+    #   pkiBundle = "/var/lib/sbctl";
+    # };
     initrd.luks.devices = {
       cryptroot = {
         device = "/dev/disk/by-uuid/1639f270-49c7-4802-a5e4-ce5dde56a7d6";
@@ -55,10 +53,6 @@
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # ------------------------------------------------------------------
-  #  Users
-  # ------------------------------------------------------------------
 
   users = {
     mutableUsers = false;
@@ -97,7 +91,7 @@
         PermitEmptyPasswords no
         ChallengeResponseAuthentication no
         AuthenticationMethods publickey
-        AuthorizedKeysFile /home/erik/.ssh/authorized_keys
+        AuthorizedKeysFile /home/%u/.ssh/authorized_keys
       '';
     };
     zfs = {

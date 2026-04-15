@@ -9,12 +9,12 @@
     homeDirectory = lib.mkDefault "erik";
     stateVersion = "26.05";
 
-    persistence."/persist" = {
-      directories = [
-        { directory = ".ssh"; mode = "0700"; }
-        { directory = ".config/git"; mode = "0700"; }
-      ];
-    };
+    # persistence."/persist" = {
+    #   directories = [
+    #     { directory = ".ssh"; mode = "0700"; }
+    #     { directory = ".config/git"; mode = "0700"; }
+    #   ];
+    # };
   };
 
   programs = {
