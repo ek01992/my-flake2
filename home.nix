@@ -9,7 +9,7 @@
   home.homeDirectory = lib.mkDefault "erik";
   home.stateVersion = "26.05";
   home.packages = with pkgs; [
-    nixfmt
+    nixfmt-rfc-style
   ];
 
   imports = [
