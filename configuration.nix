@@ -63,7 +63,7 @@
   networking.hostId = "e1add2a5"; # <<<--- replace with your own value
   networking.networkmanager.enable = true;
 
-  users.users.root.initialPassword = "temp"; # change after first login
+  users.users.root.initialPassword = "$y$j9T$CX.Q79tmrCY1nKHGCpjq2.$uqarPMOsKeIbAUMp9C26DyGVHAkS2cTxNCTjj714VD."; # change after first login
 
   boot.kernelParams = [ "console=tty1" ];
 
@@ -84,6 +84,9 @@
     group = "erik";
     # :r /tmp/pass.txt:
     initialHashedPassword = "$y$j9T$CX.Q79tmrCY1nKHGCpjq2.$uqarPMOsKeIbAUMp9C26DyGVHAkS2cTxNCTjj714VD.";
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAFlPT1jGxLHKRxId53rGNGWT6pI8HzGQ2nyKcG4RGBa erik@home-desktop"
+    ];
   };
 
   # This enables `chown -R your-user:your-user`
@@ -109,7 +112,16 @@
   # ------------------------------------------------------------------
   services.openssh = {
     enable = true;
-    settings.PermitRootLogin = "yes";
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = "no";
+      KbdInteractiveAuthentication = "no";
+      PrintMotd = "no";
+      UsePAM = "yes";
+      X11Forwarding = "no";
+      PermitEmptyPasswords = "no";
+      PubkeyAuthentication = "yes";
+    };
   };
   system.stateVersion = "26.05";
 }
