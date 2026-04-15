@@ -67,6 +67,8 @@
 
   boot.kernelParams = [ "console=tty1" ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # ------------------------------------------------------------------
   #  Users
   # ------------------------------------------------------------------
