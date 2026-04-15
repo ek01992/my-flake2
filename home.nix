@@ -9,44 +9,25 @@
   # Change your-user
   home.homeDirectory = lib.mkDefault "erik";
   home.stateVersion = "26.05";
-  home.packages = with pkgs; [
-    nixfmt-rfc-style
-  ];
 
   imports = [
   ];
   programs.home-manager.enable = true;
-
-  programs.helix = {
-    enable = true;
-    settings = {
-      theme = "autumn_night_transparent";
-      editor.cursor-shape = {
-        normal = "block";
-        insert = "bar";
-        select = "underline";
-      };
-    };
-    languages.language = [{
-      name = "nix";
-      auto-format = true;
-      formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
-    }];
-    themes = {
-      autumn_night_transparent = {
-        "inherits" = "autumn_night";
-        "ui.background" = { };
-      };
-    };
-  };
-
+  programs.bat.enable = true;
+  programs.helix.enable = true;
+  programs.ripgrep.enable = true;
+  programs.fastfetch.enable = true;
   programs.git = {
     enable = true;
     settings.user = {
       name = "Erik";
+      userName = "ek01992";
       email = "ek01992@proton.me";
     };
-    config.init.defaultBranch = "main";
+    extraConfig = {
+      init.defaultBranch = "main";
+      pull.rebase = true;
+    };
   };
 
   # xdg.portal = {
