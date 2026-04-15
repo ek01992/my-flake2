@@ -8,10 +8,6 @@
     ./impermanence.nix
   ];
   # environment.systemPackages = [ pkgs.sbctl ];
-  environment.systemPackages  = with pkgs; [
-    git
-    vim
-  ];
 
   boot = {
     loader = {
