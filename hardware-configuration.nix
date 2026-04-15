@@ -33,7 +33,7 @@
       fsType = "zfs";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/29B3-4A92";
+      device = "/dev/disk/by-uuid/90A9-9CEC";
       fsType = "vfat";
       options = [
         "fmask=0077"

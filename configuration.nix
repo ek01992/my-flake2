@@ -33,7 +33,7 @@
     # };
     initrd.luks.devices = {
       cryptroot = {
-        device = "/dev/disk/by-uuid/1639f270-49c7-4802-a5e4-ce5dde56a7d6";
+        device = "/dev/disk/by-uuid/de330c56-2815-45f4-8c88-811e55b8080c";
         allowDiscards = true;
         preLVM = true;
       };
