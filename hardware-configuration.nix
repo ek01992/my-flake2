@@ -12,15 +12,15 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules = [
-    "nvme"
     "xhci_pci"
-    "ahci"
-    "usb_storage"
+    "thunderbolt"
+    "nvme"
+    "uas"
     "usbhid"
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
@@ -29,7 +29,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/5534-A4AF";
+    device = "/dev/disk/by-uuid/29B3-4A92";
     fsType = "vfat";
     options = [
       "fmask=0077"

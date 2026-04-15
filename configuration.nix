@@ -107,9 +107,9 @@
   # ------------------------------------------------------------------
   # (Optional) Enable SSH for post-install configuration
   # ------------------------------------------------------------------
-  # services.openssh = {
-  #  enable = true;
-  #  settings.PermitRootLogin = "yes";
-  #};
+  services.openssh = {
+    enable = true;
+    settings.PermitRootLogin = "yes";
+  };
   system.stateVersion = "26.05";
 }
