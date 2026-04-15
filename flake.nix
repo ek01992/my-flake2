@@ -14,14 +14,14 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, impermanence, ... }@inputs:
+    { nixpkgs, home-manager, ... }@inputs:
     {
       nixosConfigurations = {
         nixxy = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
-            impermanence.nixosModules.impermanence
+            inputs.impermanence.nixosModules.impermanence
             # home-manager.nixosModules.home-manager
             # inputs.lanzaboote.nixosModules.lanzaboote
 
