@@ -9,7 +9,7 @@
     homeDirectory = lib.mkDefault "erik";
     stateVersion = "26.05";
 
-    persistence."/persist" = {
+    persistence."/persist/home/erik" = {
       directories = [
         { directory = ".ssh"; mode = "0700"; }
         { directory = ".config/git"; mode = "0700"; }
@@ -36,21 +36,17 @@
     };
   };
 
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-    desktop = null;
-    documents = null;
-    download = "/home/erik/downloads";
-    music = null;
-    pictures = null;
-    publicShare = null;
-    templates = null;
-    videos = null;
-    extraConfig = {
-      XDG_PROJECTS_DIR = "/home/erik/projects";
-      XDG_NOTES_DIR = "/home/erik/notes";
-      XDG_TMP_DIR = "/home/erik/tmp";
-    };
+
+  # xdg.userDirs = {
+    # enable = true;
+    # createDirectories = true;
+    # desktop = null;
+    # documents = null;
+    # download = "/home/erik/downloads";
+    # music = null;
+    # pictures = null;
+    # publicShare = null;
+    # templates = null;
+    # videos = null;
   };
 }
