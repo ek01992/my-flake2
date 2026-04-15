@@ -11,8 +11,8 @@
 
     persistence."/persist" = {
       directories = [
-        { directory = "/home/erik/.ssh"; mode = "0700"; }
-        { directory = "/home/erik/.config/git"; mode = "0700"; }
+        { directory = ".ssh"; mode = "0700"; }
+        { directory = ".config/git"; mode = "0700"; }
       ];
     };
   };
@@ -50,6 +50,7 @@
     extraConfig = {
       XDG_PROJECTS_DIR = "/home/erik/projects";
       XDG_NOTES_DIR = "/home/erik/notes";
+      XDG_TMP_DIR = "/home/erik/tmp";
     };
   };
 }
