@@ -23,8 +23,8 @@
       name = "Erik";
       email = "ek01992@proton.me";
     };
-    init.defaultBranch = "main";
-    pull.rebase = true;
+    settings.init.defaultBranch = "main";
+    settings.pull.rebase = true;
   };
 
   # xdg.portal = {
