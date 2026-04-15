@@ -8,6 +8,9 @@
   # Change your-user
   home.homeDirectory = lib.mkDefault "erik";
   home.stateVersion = "26.05";
+  home.packages = with pkgs; [
+    nixfmt;
+  ];
 
   imports = [
   ];
